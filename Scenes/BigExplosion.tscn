@@ -1,0 +1,29 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Sounds and Effects/EnemyDie.wav" type="AudioStream" id=1]
+[ext_resource path="res://Sprites/explosion2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/explosion4.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/explosion3.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/explosion5.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/explosion1.png" type="Texture" id=6]
+[ext_resource path="res://Scripts/BigExplosion.gd" type="Script" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 2 ), ExtResource( 4 ), ExtResource( 3 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "explode",
+"speed": 8.0
+} ]
+
+[node name="BigExplosion" type="AnimatedSprite"]
+scale = Vector2( 3, 3 )
+frames = SubResource( 1 )
+animation = "explode"
+speed_scale = 1.4
+script = ExtResource( 7 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )
+autoplay = true
+[connection signal="animation_finished" from="." to="." method="_on_BigExplosion_animation_finished"]

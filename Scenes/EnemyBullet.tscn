@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Sprites/Ammo.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/EnemyBullet.gd" type="Script" id=2]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 5.21955
+height = 33.1146
+
+[node name="EnemyBullet" type="RigidBody2D" groups=[
+"enemybullet",
+]]
+collision_layer = 16
+collision_mask = 67
+contacts_reported = 1
+contact_monitor = true
+script = ExtResource( 2 )
+
+[node name="Ammo" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.6, 0.8 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 777.003, 791.435, 60.9418, 114.127 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0.676384, -1.08221 )
+rotation = 1.5708
+shape = SubResource( 1 )
+[connection signal="body_entered" from="." to="." method="_on_EnemyBullet_body_entered"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://onlyObjects_retina_rotated.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/PickUp.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 47.0969, 49.4592 )
+
+[node name="PickUp" type="StaticBody2D"]
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 421, 136, 54, 52 )
+
+[node name="PickUpArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickUpArea"]
+shape = SubResource( 1 )
+[connection signal="body_entered" from="PickUpArea" to="." method="_on_PickUpArea_body_entered"]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Sprites/Tanks.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/enTank.gd" type="Script" id=2]
+
+[node name="enTank" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Tanks" type="Sprite" parent="."]
+rotation = 1.5708
+scale = Vector2( 0.270783, 0.240553 )
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 89.4137, 77.9779, 251.684, 316.456 )

@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scripts/HealthBar.gd" type="Script" id=1]
+[ext_resource path="res://barHorizontal_green_mid 200.png" type="Texture" id=2]
+
+[node name="HealthBar" type="Control"]
+modulate = Color( 1, 1, 1, 0.945098 )
+margin_right = 200.0
+margin_bottom = 26.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+healthy_color = Color( 0.376471, 0.976471, 0.376471, 1 )
+danger_color = Color( 1, 0.0705882, 0, 1 )
+
+[node name="FullHealth" type="TextureProgress" parent="."]
+margin_right = 200.0
+margin_bottom = 26.0
+value = 100.0
+texture_under = ExtResource( 2 )
+tint_under = Color( 0.262745, 0.262745, 0.262745, 0.92549 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthUnder" type="TextureProgress" parent="."]
+margin_right = 200.0
+margin_bottom = 26.0
+value = 99.0
+texture_progress = ExtResource( 2 )
+tint_progress = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HealthOver" type="TextureProgress" parent="."]
+margin_right = 200.0
+margin_bottom = 26.0
+value = 100.0
+texture_progress = ExtResource( 2 )
+tint_progress = Color( 0.0784314, 0.933333, 0.270588, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpdateTween" type="Tween" parent="."]
+
+[node name="PulseTween" type="Tween" parent="."]
+repeat = true
+playback/repeat = true

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Sprites/Tanks.png" type="Texture" id=1]
+[ext_resource path="res://Scripts/Barrel.gd" type="Script" id=2]
+[ext_resource path="res://joystick/Joystick.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Analog.tscn" type="PackedScene" id=4]
+
+[node name="Barrel" type="Node2D"]
+scale = Vector2( 0.3, 0.3 )
+script = ExtResource( 2 )
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 3.14159
+texture = ExtResource( 1 )
+offset = Vector2( 0, -70 )
+region_enabled = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Joystick" parent="CanvasLayer" instance=ExtResource( 3 )]
+visible = false
+position = Vector2( 864.446, 487.578 )
+scale = Vector2( 4.91133, 4.94422 )
+
+[node name="Analog" parent="CanvasLayer" instance=ExtResource( 4 )]
+position = Vector2( 864.446, 487.578 )
+scale = Vector2( 1.5, 1.5 )
