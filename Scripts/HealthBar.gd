@@ -26,7 +26,7 @@ func _assign_color(health):
 	if health < health_over.max_value * danger_zone:
 		will_pulse = true
 		if will_pulse:
-			pulse_tween.interpolate_property(health_over,"tint_progress",pulse_color, danger_color, 1.2, Tween.TRANS_SINE, Tween.EASE_IN)
+			pulse_tween.interpolate_property(health_over,"tint_progress",pulse_color, danger_color, 1.2, Tween.TRANS_SINE, Tween.EASE_IN_OUT)
 			pulse_tween.start()
 		else:
 			health_over.tint_progress = danger_color

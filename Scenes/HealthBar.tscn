@@ -11,15 +11,14 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-healthy_color = Color( 0.376471, 0.976471, 0.376471, 1 )
-danger_color = Color( 1, 0.0705882, 0, 1 )
+pulse_color = Color( 0.54902, 0, 0, 1 )
 
 [node name="FullHealth" type="TextureProgress" parent="."]
 margin_right = 200.0
 margin_bottom = 26.0
 value = 100.0
 texture_under = ExtResource( 2 )
-tint_under = Color( 0.262745, 0.262745, 0.262745, 0.92549 )
+tint_under = Color( 0.0980392, 0.0980392, 0.0980392, 0.92549 )
 __meta__ = {
 "_edit_use_anchors_": false
 }

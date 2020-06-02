@@ -1,7 +1,7 @@
 extends Node2D
 
 var bullet = preload("res://Scenes/EnemyBullet.tscn")
-var bullet_speed = 1500
+var bullet_speed = 1700
 var fire_rate = 0.6
 var can_fire = true
 

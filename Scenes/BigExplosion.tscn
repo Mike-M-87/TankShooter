@@ -20,10 +20,12 @@ animations = [ {
 scale = Vector2( 3, 3 )
 frames = SubResource( 1 )
 animation = "explode"
+frame = 2
 speed_scale = 1.4
 script = ExtResource( 7 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -20.0
 autoplay = true
 [connection signal="animation_finished" from="." to="." method="_on_BigExplosion_animation_finished"]

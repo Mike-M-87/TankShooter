@@ -7,12 +7,14 @@ var tank = {
 	"recty":105,
 	"rectw":245,
 	"recth":282,
+	"tank1text":"EQUIP",
 	"button1text":"BUY 500/=",
 	"button2text":"BUY 2000/=",
 	"bar_rectx":1040.047,
 	"bar_recty":64.534,
 	"bar_rectw":125,
 	"bar_recth":270,
+	"barrel1text":"EQUIP",
 	"probarreltext":"BUY 300/=",
 	"ultbarreltext":"BUY 1000/=",
 	"protank_purchased":false,
@@ -37,7 +39,6 @@ var enemy = preload("res://Scenes/Enemy.tscn")
 var enemyPro = preload("res://Scenes/EnemyPro.tscn")
 var enemyUlt = preload("res://Scenes/EnemyUlt.tscn")
 var spawn_rate = 3
-
 var can_spawn = true
 var SpawnPoint
 
@@ -60,12 +61,9 @@ func _ready():
 	yield(get_tree().create_timer(180),"timeout")
 	startProwave = false
 	startUltwave = true
-	yield(get_tree().create_timer(180),"timeout")
-	startProwave = true
-	startUltwave = true
-	startwave1 = true
 
 func _process(delta):
+	
 	if load_data():
 		tank.kills = tank.kills
 	$CanvasLayer/PointsLabel.text = str("Points: ", tank.kills)
@@ -84,7 +82,15 @@ func _process(delta):
 		Pro_wave()
 	if startUltwave == true:
 		ultimate_wave()
-
+	
+	
+	
+func _physics_process(delta):
+	var enemies = get_node("Enemies").get_child_count()
+	if enemies > 10:
+		set_process(false)
+	else:
+		set_process(true)
 func Pro_wave():
 	if can_spawn:
 		SpawnPoint = choose([$SpawnPoint,$SpawnPoint2])
@@ -93,7 +99,7 @@ func Pro_wave():
 		get_node("Enemies").add_child(enemy_instance)
 		emit_signal("new_spawn")
 		can_spawn = false
-		yield(get_tree().create_timer(4),"timeout")
+		yield(get_tree().create_timer(3),"timeout")
 		can_spawn = true
 
 func ultimate_wave():
@@ -104,7 +110,7 @@ func ultimate_wave():
 		get_node("Enemies").add_child(enemy_instance)
 		emit_signal("new_spawn")
 		can_spawn = false
-		yield(get_tree().create_timer(7),"timeout")
+		yield(get_tree().create_timer(5),"timeout")
 		can_spawn = true
 	
 

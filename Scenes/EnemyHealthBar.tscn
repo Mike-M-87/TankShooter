@@ -24,7 +24,7 @@ __meta__ = {
 [node name="HealthUnder" type="TextureProgress" parent="."]
 margin_right = 200.0
 margin_bottom = 25.0
-value = 100.0
+value = 99.0
 texture_progress = ExtResource( 1 )
 tint_progress = Color( 1, 0, 0, 1 )
 __meta__ = {

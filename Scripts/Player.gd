@@ -5,12 +5,14 @@ var tank = {
 	"recty":105,
 	"rectw":245,
 	"recth":282,
+	"tank1text":"EQUIP",
 	"button1text":"BUY 500/=",
 	"button2text":"BUY 2000/=",
 	"bar_rectx":1040.047,
 	"bar_recty":64.534,
 	"bar_rectw":125,
 	"bar_recth":270,
+	"barrel1text":"EQUIP",
 	"probarreltext":"BUY 300/=",
 	"ultbarreltext":"BUY 1000/=",
 	"protank_purchased":false,
@@ -23,7 +25,7 @@ var tank = {
 	"barrel_rate":0.4,
 	"kills":0
 	}
-
+	
 signal health_updated(health)
 signal killed()
 signal gameover()
@@ -84,7 +86,10 @@ func _process(delta):
 	
 	move_and_slide(Move)
 
-
+	if Move != Vector2(0,0):
+		$AudioStreamPlayer.playing = true
+	else:
+		$AudioStreamPlayer.playing = false
 	
 func _physics_process(delta):
 	#move_and_slide(joystick.get_value() * speed)

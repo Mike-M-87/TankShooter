@@ -2,8 +2,8 @@ extends Node2D
 
 var bullet = preload("res://Scenes/EnemyUltBullet.tscn")
 var missile = preload("res://Scenes/EnemyMissile.tscn")
-var bullet_speed = 1500
-var fire_rate = 0.8
+var bullet_speed = 1800
+var fire_rate = 0.5
 var can_fire = true
 
 func _process(delta):

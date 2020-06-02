@@ -14,7 +14,7 @@ func _on_newgame_pressed():
 		get_tree().change_scene("res://World.tscn")
 	else:
 		LoadPanel.visible = true
-		yield(get_tree().create_timer(5),"timeout")
+		yield(get_tree().create_timer(4),"timeout")
 		LoadPanel.visible = false
 
 func _on_quit_pressed():

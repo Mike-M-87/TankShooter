@@ -10,12 +10,14 @@ var tank = {
 	"recty":105,
 	"rectw":245,
 	"recth":282,
+	"tank1text":"EQUIP",
 	"button1text":"BUY 500/=",
 	"button2text":"BUY 2000/=",
 	"bar_rectx":1040.047,
 	"bar_recty":64.534,
 	"bar_rectw":125,
 	"bar_recth":270,
+	"barrel1text":"EQUIP",
 	"probarreltext":"BUY 300/=",
 	"ultbarreltext":"BUY 1000/=",
 	"protank_purchased":false,
@@ -28,7 +30,6 @@ var tank = {
 	"barrel_rate":0.4,
 	"kills":0
 	}
-
 
 var EnemyDeathEffect = preload("res://Scenes/EnemyDeathEffect.tscn")
 
@@ -136,7 +137,7 @@ func _process(delta):
 		missile_instance.position = $entankUlt/BulletPoint.get_global_position()
 		get_tree().get_root().get_node("world").get_node("Enemies").add_child(missile_instance)
 		can_fire = false
-		yield(get_tree().create_timer(10),"timeout")
+		yield(get_tree().create_timer(5),"timeout")
 		can_fire = true
 
 

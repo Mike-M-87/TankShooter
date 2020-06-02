@@ -65,6 +65,7 @@ func _process(delta):
 		bullet_instance.rotation_degrees = rotation_degrees
 		bullet_instance.apply_impulse(Vector2(), Vector2(0, bullet_speed).rotated(rotation))
 		get_parent().get_parent().add_child(bullet_instance)
+		$AudioStreamPlayer2D.playing = true
 		can_fire = false
 		yield(get_tree().create_timer(tank.barrel_rate),"timeout")
 		can_fire = true

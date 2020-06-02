@@ -249,7 +249,7 @@ custom_styles/pressed = SubResource( 8 )
 custom_styles/normal = SubResource( 9 )
 custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0.0235294, 0.666667, 0.0117647, 1 )
-text = "USE"
+text = "EQUIP"
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -487,7 +487,7 @@ custom_styles/pressed = SubResource( 17 )
 custom_styles/normal = SubResource( 18 )
 custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 0.0235294, 0.666667, 0.0117647, 1 )
-text = "USE"
+text = "EQUIP"
 __meta__ = {
 "_edit_use_anchors_": false
 }

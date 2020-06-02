@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Sprites/Tanks.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Barrel.gd" type="Script" id=2]
 [ext_resource path="res://joystick/Joystick.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Analog.tscn" type="PackedScene" id=4]
+[ext_resource path="res://GunShot.wav" type="AudioStream" id=5]
 
 [node name="Barrel" type="Node2D"]
 scale = Vector2( 0.3, 0.3 )
@@ -25,3 +26,7 @@ scale = Vector2( 4.91133, 4.94422 )
 [node name="Analog" parent="CanvasLayer" instance=ExtResource( 4 )]
 position = Vector2( 864.446, 487.578 )
 scale = Vector2( 1.5, 1.5 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -30.0
