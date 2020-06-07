@@ -137,6 +137,7 @@ func _on_Enemy_killed():
 	$enTank.modulate = killed_color
 	yield(get_tree().create_timer(1),"timeout")
 	queue_free()
+	get_parent().get_parent().spawns -= 1
 	
 func save_data():
 	var file = File.new()

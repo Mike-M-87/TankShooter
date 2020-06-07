@@ -114,6 +114,7 @@ func _on_EnemyUlt_killed():
 	$entankUlt.modulate = killed_color
 	yield(get_tree().create_timer(2),"timeout")
 	queue_free()
+	get_parent().get_parent().spawns -= 1
 
 
 func _on_PlayerDetector_body_entered(body):

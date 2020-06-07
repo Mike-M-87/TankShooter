@@ -1,7 +1,4 @@
-extends StaticBody2D
-
-
-signal picked()
+extends Control
 
 var tank = {
 	"rectx":678,
@@ -30,18 +27,15 @@ var tank = {
 	}
 
 func _ready():
-	
+	get_tree().paused = true
 	load_data()
-
-func _on_PickUpArea_body_entered(body):
-	var Player = get_parent().get_node("Player")
-	var health = Player.health
-	var PickMsg = get_parent().get_node("CanvasLayer/PickMsg")
-	if body.is_in_group("player"):
-		Player.health += (tank.tank_health * 20)
-		PickMsg.visible = false
-		queue_free()
-
+	$Tween.interpolate_property($LoadingBar,"value",$LoadingBar.value,100,5,Tween.TRANS_EXPO,Tween.EASE_IN)
+	$Tween.start()
+	yield($Tween,"tween_completed")
+	$AnimationPlayer.play("hide")
+	get_tree().paused = false
+	
+	
 func load_data():
 	var file = File.new()
 	if !file.file_exists("user://tank"):
@@ -50,3 +44,8 @@ func load_data():
 	tank = file.get_var()
 	file.close()
 	return true
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
+	get_tree().change_scene("res://Scenes/Menu.tscn")
+	

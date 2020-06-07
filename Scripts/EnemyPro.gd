@@ -115,6 +115,7 @@ func _on_EnemyPro_enemy_pro_killed():
 	$enTankPro.modulate = killed_color
 	yield(get_tree().create_timer(1),"timeout")
 	queue_free()
+	get_parent().get_parent().spawns -= 1
 
 
 func _on_PlayerDetector_body_entered(body):

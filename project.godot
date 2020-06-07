@@ -16,7 +16,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Tank Shooter"
-run/main_scene="res://Scenes/Menu.tscn"
+run/main_scene="res://Scenes/LoadingScreen.tscn"
 config/use_custom_user_dir=true
 config/icon="res://icon.png"
 

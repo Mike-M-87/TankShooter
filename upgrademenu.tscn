@@ -1,10 +1,11 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://upgrade.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tanks.png" type="Texture" id=2]
 [ext_resource path="res://Bubble Bobble.otf" type="DynamicFontData" id=3]
 [ext_resource path="res://Tilemaps/terrainTiles_default.png" type="Texture" id=4]
 [ext_resource path="res://barHorizontal_green_mid 200.png" type="Texture" id=5]
+[ext_resource path="res://Click On-SoundBible.com-1697535117.wav" type="AudioStream" id=6]
 
 [sub_resource type="TileSet" id=1]
 0/name = "terrainTiles_default.png 0"
@@ -668,6 +669,11 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -20.0
+autoplay = true
 [connection signal="pressed" from="quit" to="." method="_on_quit_pressed"]
 [connection signal="pressed" from="Panel/protank" to="." method="_on_protank_pressed"]
 [connection signal="pressed" from="Panel/ultimatetank" to="." method="_on_ultimatetank_pressed"]

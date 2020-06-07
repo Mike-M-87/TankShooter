@@ -135,3 +135,5 @@ func _on_Player_killed():
 func _on_HurtBox_area_entered(area):
 	if area.is_in_group("missile"):
 		damage((tank.tank_health) * 10)
+
+

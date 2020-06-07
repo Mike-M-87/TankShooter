@@ -162,8 +162,8 @@ volume_db = -25.0
 pitch_scale = 0.15
 autoplay = true
 [connection signal="health_updated" from="." to="CanvasLayer/HealthBar" method="_on_Player_health_updated"]
-[connection signal="killed" from="." to="." method="_on_Player_killed"]
 [connection signal="killed" from="." to="Barrel" method="_on_Player_killed"]
+[connection signal="killed" from="." to="." method="_on_Player_killed"]
 [connection signal="timeout" from="InvulnerabilityTimer" to="." method="_on_InvulnerabilityTimer_timeout"]
 [connection signal="area_entered" from="HurtBox" to="." method="_on_HurtBox_area_entered"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]

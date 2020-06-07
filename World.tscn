@@ -480,12 +480,22 @@ position = Vector2( 533.084, -494.834 )
 [node name="starcopy2" type="Sprite" parent="."]
 position = Vector2( -593.839, 1.05554 )
 texture = ExtResource( 14 )
+
+[node name="WaveOneTimer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+
+[node name="WaveTwoTimer" type="Timer" parent="."]
+wait_time = 240.0
+one_shot = true
 [connection signal="new_spawn" from="." to="." method="_on_world_new_spawn"]
 [connection signal="gameover" from="Player" to="." method="_on_Player_gameover"]
 [connection signal="killed" from="Player" to="." method="_on_Player_killed"]
 [connection signal="pressed" from="PauseMenu/PauseControl/Panel/restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/PauseControl/Panel/menu" to="." method="_on_menu_pressed"]
 [connection signal="timeout" from="PickUpTimer" to="." method="_on_PickUpTimer_timeout"]
+[connection signal="timeout" from="WaveOneTimer" to="." method="_on_WaveOneTimer_timeout"]
+[connection signal="timeout" from="WaveTwoTimer" to="." method="_on_WaveTwoTimer_timeout"]
 
 [editable path="CanvasLayer/PickMsg"]
 

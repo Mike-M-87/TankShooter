@@ -29,6 +29,7 @@ var tank = {
 
 func _ready():
 	
+	
 	if load_data():
 		ScoreLabel.set_text(str("Points: " ,tank.kills))
 

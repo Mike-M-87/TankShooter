@@ -33,6 +33,7 @@ var startwave1 = true
 var startProwave = false
 var startUltwave = false
 
+var Healthbar = preload("res://Scenes/HealthBar.tscn")
 
 var PickUp = preload("res://Scenes/PickUp.tscn")
 var enemy = preload("res://Scenes/Enemy.tscn")
@@ -42,28 +43,24 @@ var spawn_rate = 3
 var can_spawn = true
 var SpawnPoint
 
-var spawns = -1
+var spawns = 2
 
 func choose(array):
 	array.shuffle()
 	return array.front()
 
 func _ready():
-	
+	$WaveOneTimer.start()
+	$WaveTwoTimer.start()
+	assert($WaveOneTimer.wait_time == 60)
+	assert($WaveTwoTimer.wait_time == 240)
 	$PickUpTimer.start()
 	
 	if load_data():
 		tank.kills = tank.kills
-		
-	yield(get_tree().create_timer(60),"timeout")
-	startwave1 = false
-	startProwave = true
-	yield(get_tree().create_timer(180),"timeout")
-	startProwave = false
-	startUltwave = true
+
 
 func _process(delta):
-	
 	if load_data():
 		tank.kills = tank.kills
 	$CanvasLayer/PointsLabel.text = str("Points: ", tank.kills)
@@ -77,20 +74,21 @@ func _process(delta):
 			can_spawn = false
 			yield(get_tree().create_timer(spawn_rate),"timeout")
 			can_spawn = true
-	
+	print(spawns)
+
 	if startProwave == true:
 		Pro_wave()
 	if startUltwave == true:
 		ultimate_wave()
-	
-	
-	
 func _physics_process(delta):
-	var enemies = get_node("Enemies").get_child_count()
-	if enemies > 10:
+	
+	if spawns > 10:
 		set_process(false)
-	else:
+	
+	elif spawns <= 6:
 		set_process(true)
+	
+	print(spawns)
 func Pro_wave():
 	if can_spawn:
 		SpawnPoint = choose([$SpawnPoint,$SpawnPoint2])
@@ -99,7 +97,7 @@ func Pro_wave():
 		get_node("Enemies").add_child(enemy_instance)
 		emit_signal("new_spawn")
 		can_spawn = false
-		yield(get_tree().create_timer(3),"timeout")
+		yield(get_tree().create_timer(spawn_rate),"timeout")
 		can_spawn = true
 
 func ultimate_wave():
@@ -110,7 +108,7 @@ func ultimate_wave():
 		get_node("Enemies").add_child(enemy_instance)
 		emit_signal("new_spawn")
 		can_spawn = false
-		yield(get_tree().create_timer(5),"timeout")
+		yield(get_tree().create_timer(spawn_rate),"timeout")
 		can_spawn = true
 	
 
@@ -153,8 +151,15 @@ func load_data():
 	tank = file.get_var()
 	file.close()
 	return true
-	
-
 
 func _on_world_new_spawn():
 	spawns += 1
+	
+
+func _on_WaveOneTimer_timeout():
+	startwave1 = false
+	startProwave = true
+
+func _on_WaveTwoTimer_timeout():
+	startProwave = false
+	startUltwave = true

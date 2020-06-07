@@ -67,14 +67,17 @@ func _process(delta):
 		$Panel2/mySprite2.region_rect = Rect2(tank.bar_rectx,tank.bar_recty,tank.bar_rectw,tank.bar_recth)
 
 func _on_quit_pressed():
+	$AudioStreamPlayer.playing = true
 	get_tree().change_scene("res://Scenes/Menu.tscn")
 
 
 func _on_barrelpanel_pressed():
+	$AudioStreamPlayer.playing = true
 	$Panel2.visible = true
 	$Panel.visible = false
 
 func _on_tankpanel_pressed():
+	$AudioStreamPlayer.playing = true
 	$Panel.visible = true
 	$Panel2.visible = false
 
@@ -93,6 +96,7 @@ func load_data():
 	return true
 
 func _on_protank_pressed():
+	$AudioStreamPlayer.playing = true
 	if tank.protank_purchased == false:
 		if tank.kills >= 500:
 			tank.rectx = 667
@@ -135,6 +139,7 @@ func _on_protank_pressed():
 		$notePanel.visible = false
 
 func _on_ultimatetank_pressed():
+	$AudioStreamPlayer.playing = true
 	if tank.ultimatetank_purchased == false:
 		if tank.kills >=2000:
 			tank.rectx = 34
@@ -180,6 +185,7 @@ func _on_ultimatetank_pressed():
 		
 
 func _on_tank1_pressed():
+	$AudioStreamPlayer.playing = true
 	tank.rectx = 682
 	tank.recty = 113
 	tank.rectw = 235
@@ -199,6 +205,7 @@ func _on_tank1_pressed():
 	$Panel/mySprite.region_rect = Rect2(tank.rectx,tank.recty,tank.rectw,tank.recth)
 
 func _on_barrel1_pressed():
+	$AudioStreamPlayer.playing = true
 	tank.bar_rectx = 1040.047
 	tank.bar_recty = 64.534
 	tank.bar_rectw = 125
@@ -217,6 +224,7 @@ func _on_barrel1_pressed():
 	
 
 func _on_probarrel_pressed():
+	$AudioStreamPlayer.playing = true
 	if tank.probarrel_purchased == false:
 		if tank.kills >= 300:
 			tank.bar_rectx = 1030.967
@@ -256,6 +264,7 @@ func _on_probarrel_pressed():
 		
 
 func _on_ultbarrel_pressed():
+	$AudioStreamPlayer.playing = true
 	if tank.ultbarrel_purchased == false:
 		if tank.kills >= 1000:
 			tank.bar_rectx = 1094

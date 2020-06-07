@@ -1,6 +1,6 @@
 extends Control
 
-
+onready var Player = get_parent().get_parent()
 
 onready var health_over = $HealthOver
 onready var health_under = $HealthUnder
@@ -34,4 +34,3 @@ func _assign_color(health):
 		health_over.tint_progress = caution_color
 	else:
 		health_over.tint_progress = healthy_color
-	

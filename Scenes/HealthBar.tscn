@@ -11,7 +11,9 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-pulse_color = Color( 0.54902, 0, 0, 1 )
+caution_color = Color( 0, 1, 0, 1 )
+danger_color = Color( 0, 1, 0, 1 )
+pulse_color = Color( 0, 1, 0, 1 )
 
 [node name="FullHealth" type="TextureProgress" parent="."]
 margin_right = 200.0
