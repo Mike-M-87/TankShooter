@@ -23,7 +23,32 @@ var tank = {
 	"tank_speed":400,
 	"tank_health":2,
 	"barrel_rate":0.4,
-	"kills":0
+	"kills":0,
+	"level":0,
+	"tank1_damage":20,
+	"protank_damage":40,
+	"ult_tank_damage":70,
+	"tank1_health":2.0,
+	"protank_health":1.0,
+	"ult_tankhealth":0.5,
+	"tank1_speed":400,
+	"protank_speed":600,
+	"ult_tankspeed":400,
+	"tank1_upgrades":0,
+	"protank_upgrades":0,
+	"ult_tank_upgrades":0,
+	"tank1_upg_txt":"UPGRADE 100/=",
+	"protank_upg_txt":"UPGRADE 200/=",
+	"ultank_upg_txt":"UPGRADE 300/=",
+	"tur1_rate":0.4,
+	"turpro_rate":0.3,
+	"turult_rate":0.15,
+	"tur1_upgrades":0,
+	"turpro_upgrades":0,
+	"turult_upgrades":0,
+	"tur1_upg_points":50,
+	"turpro_upg_points":70,
+	"turult_upg_points":100,
 	}
 	
 signal health_updated(health)
@@ -31,7 +56,7 @@ signal killed()
 signal gameover()
 
 
-
+onready var screenshake = $Camera2D/ScreenShake
 onready var joystick = get_parent().get_node("CanvasLayer/Joystick/joystick_button")
 onready var Tank = $Tank
 onready var TankSprite = $Tank/Sprite
@@ -53,6 +78,7 @@ onready var Analog = get_parent().get_node("CanvasLayer/Analog")
 var Move = Vector2()
 
 func _ready():
+	
 	if load_data():
 		tank.tank_health = tank.tank_health
 #func _true_value():
@@ -117,6 +143,7 @@ func _set_health(value):
 func _on_HurtBox_body_entered(body):
 	if body.is_in_group("enemybullet"):
 		damage(tank.tank_health)
+
 	
 func _on_InvulnerabilityTimer_timeout():
 	effects_animation.play("normal")
@@ -135,5 +162,6 @@ func _on_Player_killed():
 func _on_HurtBox_area_entered(area):
 	if area.is_in_group("missile"):
 		damage((tank.tank_health) * 10)
+		screenshake.start(0.5,15,10)
 
 

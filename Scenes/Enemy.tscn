@@ -53,8 +53,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetector"]
 shape = SubResource( 3 )
 [connection signal="enemy_health_updated" from="." to="EnemyHealthBar" method="_on_Enemy_enemy_health_updated"]
-[connection signal="killed" from="." to="." method="_on_Enemy_killed"]
 [connection signal="killed" from="." to="enTank" method="_on_Enemy_killed"]
+[connection signal="killed" from="." to="." method="_on_Enemy_killed"]
 [connection signal="body_entered" from="HurtBox" to="." method="_on_HurtBox_body_entered"]
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]
 [connection signal="body_exited" from="PlayerDetector" to="." method="_on_PlayerDetector_body_exited"]

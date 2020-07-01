@@ -23,7 +23,8 @@ var tank = {
 	"tank_speed":400,
 	"tank_health":2,
 	"barrel_rate":0.4,
-	"kills":0
+	"kills":0,
+	"level":0
 	}
 
 var kills = 0

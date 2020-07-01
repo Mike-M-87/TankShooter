@@ -25,7 +25,32 @@ var tank = {
 	"tank_speed":400,
 	"tank_health":2,
 	"barrel_rate":0.4,
-	"kills":0
+	"kills":0,
+	"level":0,
+	"tank1_damage":20,
+	"protank_damage":40,
+	"ult_tank_damage":70,
+	"tank1_health":2.0,
+	"protank_health":1.0,
+	"ult_tankhealth":0.5,
+	"tank1_speed":400,
+	"protank_speed":600,
+	"ult_tankspeed":400,
+	"tank1_upgrades":0,
+	"protank_upgrades":0,
+	"ult_tank_upgrades":0,
+	"tank1_upg_txt":"UPGRADE 100/=",
+	"protank_upg_txt":"UPGRADE 200/=",
+	"ultank_upg_txt":"UPGRADE 300/=",
+	"tur1_rate":0.4,
+	"turpro_rate":0.3,
+	"turult_rate":0.15,
+	"tur1_upgrades":0,
+	"turpro_upgrades":0,
+	"turult_upgrades":0,
+	"tur1_upg_points":50,
+	"turpro_upg_points":70,
+	"turult_upg_points":100,
 	}
 
 signal new_spawn()
@@ -50,16 +75,17 @@ func choose(array):
 	return array.front()
 
 func _ready():
+
 	$WaveOneTimer.start()
 	$WaveTwoTimer.start()
 	assert($WaveOneTimer.wait_time == 60)
 	assert($WaveTwoTimer.wait_time == 240)
 	$PickUpTimer.start()
-	
+	load_data()
 	if load_data():
 		tank.kills = tank.kills
-
-
+		tank.level = tank.level
+	
 func _process(delta):
 	if load_data():
 		tank.kills = tank.kills
@@ -74,7 +100,7 @@ func _process(delta):
 			can_spawn = false
 			yield(get_tree().create_timer(spawn_rate),"timeout")
 			can_spawn = true
-	print(spawns)
+	
 
 	if startProwave == true:
 		Pro_wave()
@@ -82,12 +108,11 @@ func _process(delta):
 		ultimate_wave()
 func _physics_process(delta):
 	
-	if spawns > 10:
+	if spawns > 6:
 		set_process(false)
 	
-	elif spawns <= 6:
+	elif spawns <= 3:
 		set_process(true)
-	
 	print(spawns)
 func Pro_wave():
 	if can_spawn:
@@ -157,9 +182,14 @@ func _on_world_new_spawn():
 	
 
 func _on_WaveOneTimer_timeout():
+	$WaveOneTimer.stop()
 	startwave1 = false
 	startProwave = true
+	tank.level += 1
+	save_data()
 
 func _on_WaveTwoTimer_timeout():
+	$WaveTwoTimer.stop()
 	startProwave = false
 	startUltwave = true
+	

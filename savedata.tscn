@@ -1,0 +1,74 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://savedata.gd" type="Script" id=1]
+[ext_resource path="res://Bubble Bobble.otf" type="DynamicFontData" id=2]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0, 0.0117647, 0.145098, 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 20
+font_data = ExtResource( 2 )
+
+[node name="savedata" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -7.53668
+margin_bottom = -7.53668
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="Panel" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="Panel"]
+margin_right = 1024.0
+margin_bottom = 465.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="save" type="Button" parent="Panel"]
+margin_left = 39.0
+margin_top = 485.0
+margin_right = 264.0
+margin_bottom = 601.0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="load" type="Button" parent="Panel"]
+margin_left = 306.0
+margin_top = 491.0
+margin_right = 512.0
+margin_bottom = 600.0
+text = "LOAD"
+
+[node name="delete" type="Button" parent="Panel"]
+margin_left = 567.0
+margin_top = 491.0
+margin_right = 727.0
+margin_bottom = 593.0
+text = "DELETE"
+
+[node name="remove_health" type="Button" parent="Panel"]
+margin_left = 800.0
+margin_top = 491.0
+margin_right = 1001.0
+margin_bottom = 593.0
+text = "REMOVE HEALTH"
+[connection signal="pressed" from="Panel/save" to="." method="_on_save_pressed"]
+[connection signal="pressed" from="Panel/load" to="." method="_on_load_pressed"]
+[connection signal="pressed" from="Panel/delete" to="." method="_on_delete_pressed"]
+[connection signal="pressed" from="Panel/remove_health" to="." method="_on_remove_health_pressed"]
