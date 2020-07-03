@@ -1,6 +1,5 @@
 extends Control
 
-
 var tank = {
 	"rectx":678,
 	"recty":105,
@@ -53,7 +52,6 @@ var tank = {
 	}
 
 func _ready():
-	
 	get_tree().paused = true
 	load_data()
 	$Tween.interpolate_property($LoadingBar,"value",$LoadingBar.value,100,5,Tween.TRANS_EXPO,Tween.EASE_IN)
@@ -61,8 +59,9 @@ func _ready():
 	yield($Tween,"tween_completed")
 	$AnimationPlayer.play("hide")
 	get_tree().paused = false
-	
-	
+ 
+
+
 func load_data():
 	var file = File.new()
 	if !file.file_exists("user://tank"):
@@ -72,6 +71,7 @@ func load_data():
 	file.close()
 	return true
 
-
 func _on_AnimationPlayer_animation_finished(anim_name):
 	get_tree().change_scene("res://Scenes/Menu.tscn")
+
+

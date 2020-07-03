@@ -7,6 +7,7 @@ var can_fire = true
 
 
 
+
 func _process(delta):
 	if can_fire:
 		var bullet_instance = bullet.instance()

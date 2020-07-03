@@ -100,6 +100,7 @@ func _process(delta):
 			can_spawn = false
 			yield(get_tree().create_timer(spawn_rate),"timeout")
 			can_spawn = true
+
 	
 
 	if startProwave == true:
@@ -113,7 +114,7 @@ func _physics_process(delta):
 	
 	elif spawns <= 3:
 		set_process(true)
-	print(spawns)
+
 func Pro_wave():
 	if can_spawn:
 		SpawnPoint = choose([$SpawnPoint,$SpawnPoint2])
